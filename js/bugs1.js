@@ -65,7 +65,7 @@ function edit_contact(icon) {
 }
 
 // Cambiando el title de la app
-document.title = 'Libreta de Contactos';
+document.title = 'Contacts Library';
 
 // Permitiendo nombres vacios
 MIN_NAME_LENGTH = -1;

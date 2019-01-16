@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Endava - Testing Training</title>
+    <meta property="og:title" content="Endava - RSD-Testing Training"/>
+    <meta property="og:locale" content="es_AR"/>
+    <meta name="description" content="Our purpose of the testing training is share and impart knowledge. Teach about techniques for planning tests.
+Apply techniques  of software testing in projects. Select the appropriate testing techniques and objectives. Learn a common terminology."/>
+    <meta property="og:description" content="Our purpose of the testing training is share and impart knowledge. Teach about techniques for planning tests.
+Apply techniques  of software testing in projects. Select the appropriate testing techniques and objectives. Learn a common terminology."/>
+    <link rel="canonical" href="/"/>
+    <meta property="og:url" content="/"/>
+    <meta property="og:site_name" content="Endava - Testing Training"/>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/images/favicon.png" type="image/png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+	
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+    <!--<link rel="stylesheet" href="/assets/main.css">-->
+    <style>
+        /* body {
+            background-color: #f4aa42;
+        }*/
+    </style>
+
+</head>
+
+<body> <!-- start body -->
+<div class="container"> <!-- start container -->
+    <div class="row">
+
+        <header class="site-header" role="banner">
+
+            <div class="wrapper">
+
+            <!--<a class="site-title" rel="author" href="/">Endava - Testing Training</a>-->
+
+                <nav class="site-nav">
+
+                    <div class="trigger">
+                    <!--<a class="page-link" href="/about/">¿Endava - Testing Training?</a>-->
+                    <!--<a class="page-link" href="/cursos/">Endava Current training - Testing Training</a>-->
+                    <!--<a class="page-link" href="/faq/">Endava - Testing Training FAQ</a>-->
+                    <!--<a class="page-link" href="/"></a>-->
+                    </div>
+                </nav>
+
+            </div>
+
+        </header>
+    </div>
+
+<main class="page-content" aria-label="Content">
+    <div class="wrapper">
+        <div class="home">
+                <img src="https://www.endava.com/-/media/EndavaDigital/Endava/Images/MetaDataImages/preview-image.ashx"
+                     alt="icono" class="img-responsive center-block img-logo" />
+
+            <h1 class="rounded red">Epic: Contacts</h1>
+
+            <h3>User Story: List of Contacts</h3>
+            <ul>
+                <li>As a user I'll be able to see a list of contacts</li>
+            </ul>
+            <h4>AC: acceptance criteria</h4>
+            <ul>
+                <li>The title page should be "Contacts"</li>
+                <li>The list contains Contact Name, Email and actions that can be done by contact</li>
+                <li>When there are none contact the following message “There are none contact” is displayed</li>
+            </ul>
+            <h3>User Story: Order contacs</h3>
+            <ul>
+                <li>As a user I'll be able to order the list of contacts</li>
+            </ul>
+            <h4>AC: acceptance criteria</h4>
+            <ul>
+                <li>The list can be ordered by Name or Email, ascending or descending</li>
+                <li>The contacts are alphabetically ordered by name by default</li>
+            </ul>
+            <h3>User Story: New Contact</h3>
+            <ul>
+                <li>As a user I'll be able to add a new contacts</li>
+            </ul>
+            <h4>AC: acceptance criteria</h4>
+            <ul>
+                <li>The Name is requiered</li>
+                <li>The Name is empty by default</li>
+                <li>The Name is a text with a max lenght of 35 characters</li>
+                <li>The Email is requiered</li>
+                <li>The Email is empty by default</li>
+                <li>The Email is a text with a max lenght of 35 characters</li>
+                <li>The Email format is validated, the following message should be displayed: "The email format is not correct"</li>
+                    <ul>
+                        <li>Email format:  http://tools.ietf.org/html/rfc5322#section-3.4.1</li>
+                    </ul>
+                <li>The Email should be unique for the contacts</li>
+                <li>When save the contact, should be added to the list, with the options to edit and delete</li>
+            </ul>
+            <h3>User Story: Edit Contact</h3>
+            <ul>
+                <li>As a user I'll be able to edit a contact</li>
+            </ul>
+            <h4>AC: acceptance criteria</h4>
+            <ul>
+                <li>The contact can be edited by clicking the edit button</li>
+                <li>The contact information should be displayed to be edited</li>
+                <li>The Name is requiered</li>
+                <li>The Name is a text with a max lenght of 35 characters</li>
+                <li>The Email is requiered</li>
+                <li>The Email is a text with a max lenght of 35 characters</li>
+                <li>The Email format is validated, the following message should be displayed: "The email format is not correct"</li>
+                    <ul>
+                        <li>Email format:  http://tools.ietf.org/html/rfc5322#section-3.4.1</li>
+                    </ul>
+                <li>The Email should be unique for the contacts</li>
+            </ul>
+            <h3>User Story: Delete Contact</h3>
+            <ul>
+                <li>As a user I'll be able to delete a contact</li>
+            </ul>
+            <h4>AC: acceptance criteria</h4>
+            <ul>
+                <li>The contact can be edited by clicking the delete button</li>
+                <li>A confirmation message should be displayed: "Are you sure that you want to delete <Contact Name>"</li>
+                <li>The user is able to cancel the delete</li>
+                <li>When the user accept the deletion, the contact should be deleted from the list of contacts</li>
+            </ul>
+        </div>
+    </div>  
+</main>
+</body>
+
+</html>

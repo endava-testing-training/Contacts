@@ -1,7 +1,7 @@
 var CONTACT_ROW_TEMPLATE = "<tr>"
                          +   "<td class='contact-id' name='contact-id' style='display:none'>${id}</td>"
                          +   "<td class='contact-name sortable' name='contact-name'>${name}</td>"
-                         +   "<td class='contact-mail sortable' name='contact-mail'>${mail}</td>"
+                         +   "<td class='contact-mail sortable' name='contact-mail'>${email}</td>"
                          +   "<td><i class='icon-pencil' onclick='edit_contact(this)'></i> / <i class='icon-remove' onclick='remove_contact(this);'></i></td>"
                          + "</tr>";
 var CURRENT_ID = 0;
@@ -17,7 +17,7 @@ function remove_contact_to_edit(id) {
 }
 
 function extract_contact_data(form) {
-    return {"id": $("#contact-id", form).val(), "name": $("#contact-name",form).val(), "mail": $("#contact-mail",form).val()};
+    return {"id": $("#contact-id", form).val(), "name": $("#contact-name",form).val(), "email": $("#contact-mail",form).val()};
 }
 
 function get_new_id() {
@@ -50,7 +50,7 @@ function save_contact() {
 };
 
 function generate_contact_row(data){
-   return $.tmpl( CONTACT_ROW_TEMPLATE, {"id": data.id, "name": data.name, "mail": data.mail});
+   return $.tmpl( CONTACT_ROW_TEMPLATE, {"id": data.id, "name": data.name, "email": data.email});
 }
 
 function confirm_use_of_form(form) {
@@ -70,7 +70,7 @@ function edit_contact(icon) {
 }
 
 function confirm_contact_removal(contact) {
-    return confirm("¿Está seguro que quiere borrar a " + contact + "?");
+    return confirm("¿Are you sure that you want to delete " + contact + "?");
 }
 
 function remove_contact(icon) {
@@ -126,26 +126,26 @@ function validate_form(form) {
     var item_id = $("#contact-id", form).val();
     var valid_name = validate_field($("#contact-name",form), function(field) {
                         return $.trim(field.val()).length > MIN_NAME_LENGTH;
-                     }, "El contacto tiene que tener un nombre") &&
+                     }, "The contact name is required") &&
                      validate_field($("#contact-name",form), function(field) {
                         return !value_already_exists($.trim(field.val()), "."+field.attr("id"), item_id);
-                     }, "Ya existe un contacto con este nombre") &&
+                     }, "The contact name already exists") &&
                      validate_field($("#contact-name",form), function(field) {
                         return $.trim(field.val()).length < MAX_NAME_LENGTH;
-                     }, "El nombre del contacto no puede superar los 35 caracteres");
+                     }, "The contact name cannot have more than 35 charaters");
 
     valid_email = validate_field($("#contact-mail",form), function(field) {
                         return $.trim(field.val()).length > MIN_MAIL_LENGTH;
-                  },    "El contacto tiene que tener un email") &&
+                  },    "The contact email is required") &&
                   validate_field($("#contact-mail",form), function(field) {
                         return $.trim(field.val()).length < MAX_MAIL_LENGTH;
-                     }, "El mail del contacto no puede superar los 35 caracteres") &&
+                     }, "The contact email cannot have more than 35 charaters") &&
                   validate_field($("#contact-mail",form), function(field) {
                         return is_valid_email_address(field.val());
-                  },    "El valor ingresado no es un email") &&
+                  },    "The email format is not correct") &&
                   validate_field($("#contact-mail",form), function(field) {
                         return !value_already_exists($.trim(field.val()), "."+field.attr("id"), item_id);
-                  },    "Ya existe un contacto con este mail");;
+                  },    "A contact with this email already exists");;
     return valid_name && valid_email;
 }
 
