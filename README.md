@@ -1,4 +1,4 @@
-## Objetivos
+## Objetives 
 
 - Show  non- funtionals requeriments 
 - Show blokers bugs
