@@ -1,12 +1,15 @@
 ## Objetivos
 
-- Presentar requerimientos no funcionales
-- Presentar bugs bloqueantes
-- Presentar dificultades que pueden presentarse cuando aparecen inconsistencias en los release notes
+- Show  non- funtionals requeriments 
+- Show blokers bugs
+- Present difficulties that may arise when inconsistencies appear in the release notes
 
-## Consideraciones
+## Considerations 
 
-- El issue "Alta - Al guardar un contacto (en el alta o en la edición) el último caracter del nombre desaparece" no queda fuera de alcance en el release notes, porque no estamos manejando RN 4
-- El issue "Edición - Al editar un contacto, mantiene el original y agrega uno nuevo con los cambios" no queda fuera de alcance en el release notes, porque no estamos manejando RN 4
-- El issue "Baja - No existe la opción eliminar en Firefox (concepto de bug bloqueante)" fue fixeado pero no agegado en la release notes de la versión siguiente sino que en una después
-- El issue "Listado - Falta el mensaje de no hay contactos disponibles" nunca fue fixeado aunque reportado en el RN3
+-The issue "  When saving a contact (in the registration or editing) the last character of the name disappears" is not out of scope in the release notes, because we are not driving RN 4
+
+- The issue "Edition - When editing a contact, keep the original and add a new one with the changes" is not out of scope in the release notes, because we are not driving RN 4
+
+-The issue "Delete - There is no option to remove in Firefox (concept of blocking bug)" was fixed but not released in the release notes of the following version but in a later
+
+- The issue "List - Missing the message of no contacts available" was never fixed although reported in the RN3
