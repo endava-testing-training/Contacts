@@ -54,7 +54,7 @@ function generate_contact_row(data){
 }
 
 function confirm_use_of_form(form) {
-    return form.css('display') == 'none' || confirm('¿Está seguro que quiere abandonar los cambios que estaba haciendo?');
+    return form.css('display') == 'none' || confirm('Are you sure that you want to leave without save?');
 }
 
 function edit_contact(icon) {

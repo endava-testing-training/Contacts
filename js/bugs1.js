@@ -1,7 +1,7 @@
-// Evitando mensaje 'no hay contactos guardados'
+// Avoid the message "There none contacts'
 function update_table_status() {}
     
-// Evitando ordenamientos
+// Avoiding sorting
 function leq(a,b) { return ((Math.random()*2)-1) <= 0; }
 function geq(a,b) { return ((Math.random()*2)-1) >= 0; }
 var COMPARATORS = {'asc':  leq, 'desc': geq };
@@ -9,7 +9,7 @@ function sort_keys(keys, order) {
     return keys.sort(leq);
 }
 
-// Soportando ordenamiento solo en browsers de Mozilla
+// Supporting sorting only in Mozilla browsers
 $(document).ready(function(){
     if (!$.browser.mozilla ) {
         $("a","th.sortable").each(function(){
@@ -18,7 +18,7 @@ $(document).ready(function(){
     }
 });
 
-// Eliminando la opcion de borrar en browsers Mozilla
+// Erasing  the option to delete contacts  in Mozilla browsers
 $(document).ready(function() {
     if ($.browser.mozilla ) {
         CONTACT_ROW_TEMPLATE = "<tr>"
@@ -31,18 +31,18 @@ $(document).ready(function() {
     }
 });
 
-// Solo soportando mails terminados en .com
+// Just supporting maisl ended in .com
 function is_valid_email_address(address) {
     var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.com$/);
     return pattern.test(address);
 }
 
-// Haciendo que cancelar igual guarde
+// Doing that cancel also save
 function cancel_contact() {
     var item_id = $("#contact-id", "#contact-form").val();
     if (item_id) {
         var validation_bkup = validate_form;
-        validate_form = function(form) {return true;}; // deshabilitar validaciones
+        validate_form = function(form) {return true;}; // Disable validations
         save_contact();
         validate_form = validation_bkup;
     } else {
@@ -50,7 +50,7 @@ function cancel_contact() {
     }
 }
 
-// Editando un elemento que no es el que pidieron editar
+// Editing an  element that is not the element to be edited
 function edit_contact(icon) {
     var form = $("#contact-form");
     if (confirm_use_of_form(form)) {
@@ -64,8 +64,8 @@ function edit_contact(icon) {
     }
 }
 
-// Cambiando el title de la app
+// Changing the title of the app
 document.title = 'Contacts Library';
 
-// Permitiendo nombres vacios
+// Allowing names empty
 MIN_NAME_LENGTH = -1;

@@ -1,4 +1,4 @@
-// Evitando ordenamientos
+// Avoiding sorting
 function leq(a,b) { return ((Math.random()*2)-1) <= 0; }
 function geq(a,b) { return ((Math.random()*2)-1) >= 0; }
 var COMPARATORS = {'asc':  leq, 'desc': geq };
@@ -6,13 +6,13 @@ function sort_keys(keys, order) {
     return keys.sort(leq);
 }
 
-// Poniendo un valor por default no vacio en el formulario
+// Value not empty as default
 function cleanup_form(form) {
     $("input", form).each(function(){$(this).val('');});
-    $($("input", form)[1]).val('Nombre');
+    $($("input", form)[1]).val('Name');
 }
 
-// Editando un elemento que no es el que pidieron editar
+// Editing an  element that is not the element to be edited
 function edit_contact(icon) {
     var form = $("#contact-form");
     if (confirm_use_of_form(form)) {
@@ -26,17 +26,17 @@ function edit_contact(icon) {
     }
 }
 
-// Borrando contacto aunque se cancele el delete  en browsers no-Mozilla
+// Deleting contact even thought the user cancel the deletion (no-Mozilla)
 $(document).ready(function() {
     if (!$.browser.mozilla ) {
         confirm_contact_removal = function(contact) {
-            confirm("¿Está seguro que quiere borrar a " + contact + "?");
+            confirm("¿Are you sure that you want to delete  " + contact + "?");
             return true;
         }
     }
 });
 
-// Tirando mensaje de mail duplicado siempre
+// Displaying email message every time
 function value_already_exists(value, target_class, id) {
     var exists = false;
     $(target_class).each(function(){
@@ -53,7 +53,7 @@ function value_already_exists(value, target_class, id) {
     return exists;
 }
 
-// Permitiendo guardar hasta 10 contactos
+// Allow save just 10 contacts
 function get_new_id() {
     if ($("tr","#contacts-table tbody").length == 10) {
         return -1;

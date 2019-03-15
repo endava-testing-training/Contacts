@@ -20,7 +20,7 @@ h1 {
     padding-bottom: 40px;
  }
 #contacts-table tbody.empty:after {
-    content: "There are none contact";
+    content: "There are none contacts";
 }
 a.active_sort {
     color: orange;
