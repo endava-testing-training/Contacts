@@ -31,7 +31,7 @@ $(document).ready(function() {
     }
 });
 
-// Just supporting maisl ended in .com
+// Just supporting mails ended in .com
 function is_valid_email_address(address) {
     var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.com$/);
     return pattern.test(address);
