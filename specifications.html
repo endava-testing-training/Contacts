@@ -37,7 +37,7 @@
         <header class="site-header" role="banner">
 
             <div class="wrapper">
-                <a class="site-title" rel="author" href="https://endava-testing-training.github.io/">Endava - Testing Training</a>
+                <a class="site-title" rel="author" href="https://endava-testing-training.github.io/">Home</a>
                 <nav class="site-nav">
 
                     <div class="trigger">
@@ -65,7 +65,7 @@
             <h4>AC: acceptance criteria</h4>
             <ul>
                 <li>The title page should be "Contacts"</li>
-                <li>The list contains Contact Name, Email and actions that can be done by contact</li>
+                <li>The list contains Contact Name, Email, Address, Phone and actions that can be done by contact</li>
                 <li>When there are none contacts the following message “There are none contacts” is displayed</li>
             </ul>
             <h3>User Story: Order contacts</h3>
@@ -74,7 +74,7 @@
             </ul>
             <h4>AC: acceptance criteria</h4>
             <ul>
-                <li>The list can be ordered by Name or Email, ascending or descending</li>
+                <li>The list can be ordered by Name or Email or Address or Phone, ascending or descending</li>
                 <li>The contacts are alphabetically ordered by name by default</li>
             </ul>
             <h3>User Story: New Contact</h3>
@@ -91,6 +91,10 @@
                 <li>The Email is a text with a max length of 35 characters</li>
                 <li>The Email format is validated, the following message should be displayed: "The email format is not correct"</li>
                 <li>The Email should be unique for the contacts</li>
+                <li>The Address is not required</li>
+                <li>The Address is empty by default</li>
+                <li>The Phone is not required</li>
+                <li>The Phone is empty by default</li>
                 <li>When save the contact, should be added to the list, with the options to edit and delete</li>
                 <li>If the user press over New Contact without saving the previous contact a message should be displayed: "Are you sure that you want to leave without save?"</li>
             </ul>
@@ -108,6 +112,10 @@
                 <li>The Email is a text with a max length of 35 characters</li>
                 <li>The Email format is validated, the following message should be displayed: "The email format is not correct"</li>
                 <li>The Email should be unique for the contacts</li>
+                <li>The Address is not required</li>
+                <li>The Address is empty by default</li>
+                <li>The Phone is not required</li>
+                <li>The Phone is empty by default</li>
             </ul>
             <h3>User Story: Delete Contact</h3>
             <ul>
@@ -115,7 +123,7 @@
             </ul>
             <h4>AC: acceptance criteria</h4>
             <ul>
-                <li>The contact can be edited by clicking the delete button</li>
+                <li>The contact can be deleted  by clicking the delete button</li>
                 <li>A confirmation message should be displayed: "Are you sure that you want to delete <Contact Name>"</li>
                 <li>The user is able to cancel the delete</li>
                 <li>When the user accept the deletion, the contact should be deleted from the list of contacts</li>

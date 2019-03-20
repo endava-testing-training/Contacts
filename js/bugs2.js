@@ -21,6 +21,9 @@ function edit_contact(icon) {
         $("#contact-id",form).val($(".contact-id", row).text());
         $("#contact-name",form).val($(".contact-name", fake_row).text());
         $("#contact-mail",form).val($(".contact-mail", fake_row).text());
+        $("#contact-address",form).val($(".contact-address", fake_row).text());
+        $("#contact-phone",form).val($(".contact-phone", fake_row).text());
+
         form.fadeIn();
         $("#contact-name",form).focus();
     }

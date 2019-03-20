@@ -2,6 +2,8 @@ var CONTACT_ROW_TEMPLATE = "<tr>"
                          +   "<td class='contact-id' name='contact-id' style='display:none'>${id}</td>"
                          +   "<td class='contact-name sortable' name='contact-name'>${name}</td>"
                          +   "<td class='contact-mail sortable' name='contact-mail'>${email}</td>"
+                         +   "<td class='contact-address sortable' name='contact-address'>${address}</td>"
+                         +   "<td class='contact-phone sortable' name='contact-phone'>${phone}</td>"
                          +   "<td><i class='icon-pencil' onclick='edit_contact(this)'></i> / <i class='icon-remove' onclick='remove_contact(this);'></i></td>"
                          + "</tr>";
 var CURRENT_ID = 0;
@@ -17,7 +19,7 @@ function remove_contact_to_edit(id) {
 }
 
 function extract_contact_data(form) {
-    return {"id": $("#contact-id", form).val(), "name": $("#contact-name",form).val(), "email": $("#contact-mail",form).val()};
+    return {"id": $("#contact-id", form).val(), "name": $("#contact-name",form).val(), "email": $("#contact-mail",form).val(),"address": $("#contact-address",form).val(),"phone": $("#contact-phone",form).val()};
 }
 
 function get_new_id() {
@@ -50,7 +52,7 @@ function save_contact() {
 };
 
 function generate_contact_row(data){
-   return $.tmpl( CONTACT_ROW_TEMPLATE, {"id": data.id, "name": data.name, "email": data.email});
+   return $.tmpl( CONTACT_ROW_TEMPLATE, {"id": data.id, "name": data.name, "email": data.email, "address":data.address, "phone":data.phone});
 }
 
 function confirm_use_of_form(form) {
@@ -64,6 +66,9 @@ function edit_contact(icon) {
         $("#contact-id",form).val($(".contact-id", row).text());
         $("#contact-name",form).val($(".contact-name", row).text());
         $("#contact-mail",form).val($(".contact-mail", row).text());
+        $("#contact-address",form).val($(".contact-address", row).text());
+        $("#contact-phone",form).val($(".contact-phone", row).text());
+
         form.fadeIn();
         $("#contact-name",form).focus();
     }

@@ -25,6 +25,8 @@ $(document).ready(function() {
                          +   "<td class='contact-id' name='contact-id' style='display:none'>${id}</td>"
                          +   "<td class='contact-name sortable' name='contact-name'>${name}</td>"
                          +   "<td class='contact-mail sortable' name='contact-mail'>${mail}</td>"
+                         +   "<td class='contact-address sortable' name='contact-address'>${address}</td>"
+                         +   "<td class='contact-phone sortable' name='contact-phone'>${phone}</td>"
                          +   "<td><i class='icon-pencil' onclick='edit_contact(this)'></i></td>"
                          + "</tr>";
 
@@ -59,6 +61,8 @@ function edit_contact(icon) {
         $("#contact-id",form).val($(".contact-id", row).text());
         $("#contact-name",form).val($(".contact-name", fake_row).text());
         $("#contact-mail",form).val($(".contact-mail", fake_row).text());
+        $("#contact-address",form).val($(".contact-address", fake_row).text());
+        $("#contact-phone",form).val($(".contact-phone", fake_row).text());
         form.fadeIn();
         $("#contact-name",form).focus();
     }
