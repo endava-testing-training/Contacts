@@ -124,8 +124,14 @@ function is_valid_email_address(address) {
 
 MIN_NAME_LENGTH = 0;
 MAX_NAME_LENGTH = 35;
+MAX_PHONE_LENGTH= 11
 MIN_MAIL_LENGTH = 0;
 MAX_MAIL_LENGTH = 35;
+
+function is_valid_numeric(phone) {
+       var pattern = new RegExp (/^([0-9])*$/);
+       return pattern.test(phone);
+       }
 
 function validate_form(form) {
     var item_id = $("#contact-id", form).val();
@@ -137,21 +143,27 @@ function validate_form(form) {
                      }, "The contact name already exists") &&
                      validate_field($("#contact-name",form), function(field) {
                         return $.trim(field.val()).length < MAX_NAME_LENGTH;
-                     }, "The contact name cannot have more than 35 charaters");
+                     }, "The contact name cannot have more than 35 characters");
 
     valid_email = validate_field($("#contact-mail",form), function(field) {
                         return $.trim(field.val()).length > MIN_MAIL_LENGTH;
                   },    "The contact email is required") &&
                   validate_field($("#contact-mail",form), function(field) {
                         return $.trim(field.val()).length < MAX_MAIL_LENGTH;
-                     }, "The contact email cannot have more than 35 charaters") &&
+                     }, "The contact email cannot have more than 35 characters") &&
                   validate_field($("#contact-mail",form), function(field) {
                         return is_valid_email_address(field.val());
                   },    "The email format is not correct") &&
                   validate_field($("#contact-mail",form), function(field) {
                         return !value_already_exists($.trim(field.val()), "."+field.attr("id"), item_id);
-                  },    "A contact with this email already exists");;
-    return valid_name && valid_email;
+                  },    "A contact with this email already exists");
+    valid_phone = validate_field($("#contact-phone",form), function(field) {
+                        return $.trim(field.val()).length < MAX_PHONE_LENGTH;
+                        }, "The contact phone cannot have more than 10 numbers")&&
+                  validate_field($("#contact-phone",form), function(field) { ;
+                        return is_valid_numeric (field.val());
+                        },    "The phone format is not correct")
+    return valid_name && valid_email && valid_phone;
 }
 
 function cleanup_errors(input) {
@@ -171,6 +183,7 @@ function new_contact() {
 function cancel_contact() {
     $("#contact-form").fadeOut();
 }
+
 
 function update_table_status() {
     var table = $("#contacts-table tbody");
