@@ -1,3 +1,8 @@
+ body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+ }
+
 h1 {
 	padding: 8px 10px;
 	color: #FFF;
@@ -15,21 +20,30 @@ h1 {
 	background-color: #de411b;
 }
 
- body {
-    padding-top: 60px;
-    padding-bottom: 40px;
- }
+.orange{
+    background-color: #de411b !Important;
+    padding: 5px
+}
+
 #contacts-table tbody.empty:after {
     content: "There are none contacts";
 }
+
 a.active_sort {
     color: orange;
 }
+
 #version {
     font-size:0.8em;
     color: gray;
 }
-.orange{
-    background-color: #de411b !Important;
-    padding: 5px
+
+input[type="image"], input[type="checkbox"], input[type="radio"] {
+	margin: 5px 5px 5px ;
+}
+
+.control-group-custom{
+    width: 50%;
+    float: left;
+
 }
