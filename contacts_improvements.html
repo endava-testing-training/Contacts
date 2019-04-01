@@ -84,17 +84,39 @@
                 <input type="text" class="span4" id="contact-phone">
             </div>
             <div class="control-group">
-                <input type="checkbox" name="newsletter" value="newsletter"> I want to receive newsletter <br>
+                <input type="checkbox" id="myBtn" name="newsletter" value="newsletter"> I want to receive newsletter <br>
             </div>
 
             <div class="form-actions" style="text-align:right">
                 <button type="submit" class="btn btn-primary">Save</button>
-                <button type="reset" class="btn" onclick="cancel_contact()">Cancel</button>
+                <button type="reset" class="btn" onclick="cancel_newsletter()">Cancel</button>
             </div>
 
       </div>
 
     </div> <!-- /container -->
+
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h3>Add an Email Address</h3>
+        </div>
+        <div class="modal-body">
+          <p><b>If you want to receive the newsletter on another email account, please write it here</b></p>
+          <p>Email address</p>
+          <input type="input" name="alternative-email" value="your@email.com"><br>
+          <button type="submit" class="btn btn-primary" onclick="save_newsletter()">Save</button>
+          <button type="reset" class="btn" onclick="cancel_newsletter()">Cancel</button>
+        </div>
+      
+      </div>
+
+    </div>
 
     <!-- Le javascript
     ================================================== -->
@@ -103,5 +125,9 @@
     <script src="js/jquery.tmpl.min.js"></script>
     <script src="js/table_sorter.js"></script>
     <script src="js/contacts_improvements.js"></script>
+
+    <script>
+
+    </script>
 
 </body></html>
