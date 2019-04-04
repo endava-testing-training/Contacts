@@ -130,6 +130,27 @@ function value_already_exists(value, target_class, id) {
     return exists;
 }
 
+function isValidDate(dateString)
+{
+
+    var parts = dateString.split("-");
+    var month = parseInt(parts[1], 10);
+    var year = parseInt(parts[0], 10);
+    var day = parseInt(parts[2], 10);
+
+    
+    if(year < 1000 || year > 3000 ||  month == 0 || month > 12) {
+        return false;
+    }
+    
+    var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
+    if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+        monthLength[1] = 29;
+
+    return day > 0 && day <= monthLength[month - 1];
+};
+
 function is_valid_email_address(address) {
     var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/);
     return pattern.test(address);
@@ -148,6 +169,11 @@ function is_valid_numeric(phone) {
 
 function validate_form(form) {
     var item_id = $("#contact-id", form).val();
+
+    var valid_date = validate_field($("#contact-date",form), function(field) {
+        return isValidDate(field.val());
+     }, "Invalid date format, use in the format'DD/MM/YY'");
+
     var valid_name = validate_field($("#contact-name",form), function(field) {
                         return $.trim(field.val()).length > MIN_NAME_LENGTH;
                      }, "The contact name is required") &&
@@ -176,7 +202,8 @@ function validate_form(form) {
                   validate_field($("#contact-phone",form), function(field) { ;
                         return is_valid_numeric (field.val());
                         },    "The phone format is not correct")
-    return valid_name && valid_email && valid_phone;
+                        console.log (valid_date);
+    return valid_date && valid_name && valid_email && valid_phone;
 }
 
 function cleanup_errors(input) {
