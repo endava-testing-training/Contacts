@@ -1,5 +1,4 @@
  body {
-    padding-top: 60px;
     padding-bottom: 40px;
  }
 
@@ -119,4 +118,64 @@ input[type="image"], input[type="checkbox"], input[type="radio"] {
     padding: 20px 0 15px 20px;
     border-bottom: 3px solid  #de411b;      
 }
+
+
+#cssMenu {
+  width: auto;
+  zoom: 1;
+  margin-bottom: 24px;
+}
+#cssMenu, #cssMenu > ul {
+  background: url(../images/highlight-bg.png) repeat;
+  padding-bottom: 4px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+#cssMenu > ul {
+  background: url(../images/menu-bg.png) repeat;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#cssMenu > ul > li {
+  float: left;
+  position: relative;
+}
+#cssMenu > ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+#cssMenu:before, #cssMenu:after, #cssMenu > ul:before, #cssMenu > ul:after {
+  content: "";
+  display: table;
+}
+#cssMenu:after, #cssMenu > ul:after {
+  clear: both;
+}
+#cssMenu > ul > li.active > a, #cssMenu > ul > li > a:active {
+  background: url(../images/hover.png) repeat;
+}
+#cssMenu > ul > li > a {
+  padding: 23px 26px;
+  display: block;
+  color: white;
+  font-size: 13px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-shadow: 0 -1px 0 #0d0d0d;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.7);
+  line-height: 18px;
+}
+
+#cssMenu > ul > li:hover > a {
+  background: url(../images/highlight-bg.png) repeat;
+  text-shadow: 0 -1px 0 #97321f;
+  text-shadow: 0 -1px 0 rgba(122, 42, 26, 0.64);
+}
+
   

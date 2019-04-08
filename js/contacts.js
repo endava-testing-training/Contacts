@@ -199,3 +199,13 @@ $(document).ready(function() {
     update_table_status();
     update_current_sort({'field':'contact-name','direction':'asc'});
 });
+   
+    
+$(function(){
+  $('.link a').filter(function(){return this.href==location.href}).parent().addClass('active').siblings().removeClass('active')
+  $('.link a').click(function(){
+    $(this).parent().addClass('active').siblings().removeClass('active')  
+  })
+})
+
+
