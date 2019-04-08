@@ -1,13 +1,62 @@
- body {
+@font-face {
+	font-family: "endava-font";
+	src: url("../external/fonts/robotocondensed-bold-webfont.woff2") format('woff');
+}
+
+body {
     padding-bottom: 40px;
  }
 
 h1 {
 	padding: 8px 10px;
-	color: #FFF;
+	color: #000;
 	border-radius: 4px;
 	margin-bottom: 30px;
+	font-family: 'endava-font', sans-serif;
+	font-weight: 900;
 }
+
+.typewriter h2{
+	font-family: 'endava-font', sans-serif;
+	font-weight: 900;
+	font-size: 18px;
+	text-transform: uppercase;
+}
+
+.typewriter h2:before {
+	content: " ";
+	width: 60px;
+	display: block;
+	margin-bottom: 20px;
+	height: 5px;
+	background-color: #de411b;
+}
+
+.typewriter h1 {
+	overflow: hidden; 
+	margin: 0 auto 40px;
+	font-size: 4.4em;
+	letter-spacing: -.02em;
+	padding: 0;
+	text-transform: uppercase;
+  white-space: nowrap;
+  line-height: initial;
+  animation: 
+	  typing .5s steps(200, end),
+	  blink-caret .75s step-end infinite;
+  }
+
+      /* The typing effect */
+      @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+        }
+        
+        /* The typewriter cursor effect */
+        @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: orange; }
+        }
 
 .img-logo {
 	max-width: 400px;
