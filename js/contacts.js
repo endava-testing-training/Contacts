@@ -208,4 +208,9 @@ $(function(){
   })
 })
 
+var lastChar = $(location).attr('href').substr(-1);
+if (lastChar=='1') {
 
+    var element = document.getElementById("forced-error");
+    element.classList.add("forcederror");
+}
