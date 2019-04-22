@@ -6,8 +6,13 @@ var CONTACT_ROW_TEMPLATE = "<tr>"
                          +   "<td class='contact-address sortable' name='contact-address'>${address}</td>"
                          +   "<td class='contact-phone sortable' name='contact-phone'>${phone}</td>"
                          +   "<td class='contact-city sortable' name='contact-city'>${city}</td>"
-                         +   "<td><i class='icon-pencil' onclick='edit_contact(this)'></i> / <i class='icon-remove' onclick='remove_contact(this);'></i></td>"
+                         +   "<td><i class='fas fa-pencil-alt' onclick='edit_contact(this)'></i> / <i class='fas fa-times' onclick='remove_contact(this);'></i></td>"
                          + "</tr>";
+
+
+
+       
+
 var CURRENT_ID = 0;
 
 function remove_contact_to_edit(id) {

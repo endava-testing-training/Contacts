@@ -16,8 +16,6 @@ h1 {
 	font-weight: 900;
 }
 
-
-
 .typewriter h2{
 	font-family: 'endava-font', sans-serif;
 	font-weight: 900;
@@ -233,4 +231,24 @@ input[type="image"], input[type="checkbox"], input[type="radio"] {
   background: url(../images/highlight-bg.png) repeat;
   text-shadow: 0 -1px 0 #97321f;
   text-shadow: 0 -1px 0 rgba(122, 42, 26, 0.64);
+}
+
+.fas,
+.svg-inline--fa {
+  opacity: .8;
+  padding: 1px;
+} 
+
+.fas:hover,
+.svg-inline--fa:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.fa-pencil-alt{
+color: #5bc0de;
+}
+
+.fa-times{
+color: #d9533f;
 }

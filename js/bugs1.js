@@ -27,7 +27,7 @@ $(document).ready(function() {
                          +   "<td class='contact-mail sortable' name='contact-mail'>${mail}</td>"
                          +   "<td class='contact-address sortable' name='contact-address'>${address}</td>"
                          +   "<td class='contact-phone sortable' name='contact-phone'>${phone}</td>"
-                         +   "<td><i class='icon-pencil' onclick='edit_contact(this)'></i></td>"
+                         +   "<td><i class='fas fa-pencil-alt' onclick='edit_contact(this)'></i></td>"
                          + "</tr>";
 
     }

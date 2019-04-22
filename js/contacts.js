@@ -2,7 +2,7 @@ var CONTACT_ROW_TEMPLATE = "<tr>"
                          +   "<td class='contact-id' name='contact-id' style='display:none'>${id}</td>"
                          +   "<td class='contact-name sortable' name='contact-name'>${name}</td>"
                          +   "<td class='contact-mail sortable' name='contact-mail'>${email}</td>"
-                         +   "<td><i class='icon-pencil' onclick='edit_contact(this)'></i> / <i class='icon-remove' onclick='remove_contact(this);'></i></td>"
+                         +   "<td><i class='fas fa-pencil-alt' onclick='edit_contact(this)'></i> / <i class='fas fa-times' onclick='remove_contact(this);'></i></td>"
                          + "</tr>";
 var CURRENT_ID = 0;
 
