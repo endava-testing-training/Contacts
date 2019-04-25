@@ -1,3 +1,5 @@
+var servidor = 'http://localhost:8080';
+
 var CONTACT_ROW_TEMPLATE = "<tr>"
                          +   "<td class='contact-id' name='contact-id' style='display:none'>${id}</td>"
                          +   "<td class='contact-date' name='contact-date'>${date}</td>"
@@ -10,10 +12,6 @@ var CONTACT_ROW_TEMPLATE = "<tr>"
                          + "</tr>";
 
 
-
-       
-
-var CURRENT_ID = 0;
 
 function remove_contact_to_edit(id) {
     $("tr", "#contacts-table tbody").each(function() {
@@ -37,11 +35,11 @@ function extract_contact_data(form) {
     };
 }
 
-function get_new_id() {
+/*function get_new_id() {
     rv = CURRENT_ID;
     CURRENT_ID += 1;
     return rv;
-}
+}*/
 
 function save_contact() {
     var form = $("#contact-form");
@@ -51,15 +49,15 @@ function save_contact() {
     if (!validate_form(form)) {
         return false;
     }
+    
     var data = extract_contact_data(form);
-    if (!data.id) {
-        data.id = get_new_id();
-        if (data.id == -1) {
-            return;
-        }
-    } else {
+    if (data.id) {
         remove_contact_to_edit(data.id);
     }
+
+    //Save data to the DB
+    saveData(data);
+
     insert_sorted($("#contacts-table"), generate_contact_row(data));
     update_table_status();
     cleanup_form();
@@ -73,6 +71,29 @@ function generate_contact_row(data){
 function confirm_use_of_form(form) {
     return form.css('display') == 'none' || confirm('Are you sure that you want to leave without save?');
 }
+
+
+function saveData(data){
+    var ruta = "/contacts_improvements/savecontact?"
+    var queryParams = {};
+    if (data.id) {
+        queryParams.id = data.id;
+    }
+    queryParams.date = data.date;
+    queryParams.name = data.name;
+    queryParams.email = data.email;
+    queryParams.address = data.address;
+    queryParams.phone = data.phone;
+    queryParams.city = data.city;
+    
+    var query = $.param(queryParams);
+    $.getJSON(servidor + ruta + query,
+        function(id) {
+            data.id = id;
+        }
+    );
+}
+
 
 function edit_contact(icon) {
     var form = $("#contact-form");
