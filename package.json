@@ -4,6 +4,7 @@
   "description": "- Show  non- functional requirements\r - Show blockers bugs\r - Present difficulties that may arise when inconsistencies appear in the release notes",
   "main": "index.js",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "mysql": "^2.17.1"
   },

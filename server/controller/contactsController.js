@@ -2,7 +2,16 @@ var conn = require('../lib/dbConn');
 
 function loadContact(req, res) {
 
-    var sql = "SELECT * FROM contact";
+    var sql =  `SELECT  co.ContactId as id,
+                        co.FullName as name,
+                        co.Email as email,
+                        co.Address as address,
+                        co.DateOfBirth as date,
+                        co.Phone as phone,
+                        ci.Name as city
+                FROM    contact co
+                  LEFT JOIN  city ci
+                    ON  ci.CityId  = co.CityId`;
     conn.query(sql, function(error, resultado, fields){
         if(error){
             console.log(error);
@@ -13,30 +22,58 @@ function loadContact(req, res) {
     })
 }
 
-function saveContact(req, res) {
+function newContact(req, res) {
     
-    var id = req.query.id;
-    var date = req.query.date;
-    var name = req.query.name;
-    var email = req.query.email;
-    var address = req.query.address;
-    var phone = req.query.phone;
+    var date = req.body.date;
+    var name = req.body.name;
+    var email = req.body.email;
+    var address = req.body.address;
+    var phone = req.body.phone;
     //var city = req.query.city;
 
     var sql;
 
-    if (id == undefined){
-        sql =  `INSERT INTO Contact (DateOfBirth, FullName, Email, Address, Phone) 
-                VALUES ('${date}','${name}','${email}','${address}','${phone}')`
-    } else {
-        sql =  `UPDATE  Contact 
-                    SET DateOfBirth = '${date}',
-                        FullName    = '${name}', 
-                        Email       = '${email}', 
-                        Address     = '${address}', 
-                        Phone       = '${phone}'
-                WHERE   id = ${id}`
-    }
+    sql =  `INSERT INTO Contact (DateOfBirth, FullName, Email, Address, Phone) 
+            VALUES ('${date}','${name}','${email}','${address}','${phone}')`
+
+    conn.query(sql, function(error){
+        if(error){
+            console.log(error);
+            return res.status(500).send("Error in the query");
+        }
+    })
+
+    sql = `SELECT MAX(ContactId) as Id FROM Contact`
+    conn.query(sql, function(error, resultado, fields){
+        if(error){
+            console.log(error);
+            return res.status(404).send("Error in the query");
+        }
+
+        res.send(fields[0].id);
+    })
+}
+
+
+function updateContact(req, res) {
+    
+    var id = req.body.id;
+    var date = req.body.date;
+    var name = req.body.name;
+    var email = req.body.email;
+    var address = req.body.address;
+    var phone = req.body.phone;
+    //var city = req.query.city;
+
+    var sql;
+
+    sql =  `UPDATE  Contact 
+                SET DateOfBirth = '${date}',
+                    FullName    = '${name}', 
+                    Email       = '${email}', 
+                    Address     = '${address}', 
+                    Phone       = '${phone}'
+            WHERE   ContactId   = ${id}`
 
     conn.query(sql, function(error){
         if(error){
@@ -44,24 +81,13 @@ function saveContact(req, res) {
             return res.status(404).send("Error in the query");
         }
     })
-
-    if (id == undefined){
-        sql = `SELECT MAX(ContactId) as Id FROM Contact`
-        conn.query(sql, function(error, resultado, fields){
-            if(error){
-                console.log(error);
-                return res.status(404).send("Error in the query");
-            }
-
-            res.send(fields[0].id);
-        })
-    } else {
-        res.send(id);
-    }
 }
+
+
 
 module.exports = {
     loadContact : loadContact,
-    saveContact : saveContact
+    newContact : newContact,
+    updateContact : updateContact
 };
 

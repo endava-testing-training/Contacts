@@ -1,4 +1,4 @@
-var servidor = 'http://localhost:8080';
+var server = 'http://localhost:8080';
 
 var CONTACT_ROW_TEMPLATE = "<tr>"
                          +   "<td class='contact-id' name='contact-id' style='display:none'>${id}</td>"
@@ -10,7 +10,6 @@ var CONTACT_ROW_TEMPLATE = "<tr>"
                          +   "<td class='contact-city sortable' name='contact-city'>${city}</td>"
                          +   "<td><i class='fas fa-pencil-alt' onclick='edit_contact(this)'></i> / <i class='fas fa-times' onclick='remove_contact(this);'></i></td>"
                          + "</tr>";
-
 
 
 function remove_contact_to_edit(id) {
@@ -35,12 +34,6 @@ function extract_contact_data(form) {
     };
 }
 
-/*function get_new_id() {
-    rv = CURRENT_ID;
-    CURRENT_ID += 1;
-    return rv;
-}*/
-
 function save_contact() {
     var form = $("#contact-form");
     $(".control-group", form).each(function() {
@@ -53,13 +46,18 @@ function save_contact() {
     var data = extract_contact_data(form);
     if (data.id) {
         remove_contact_to_edit(data.id);
+
+        //Save data to the DB
+        updateContact(data);
+    } else {
+
+        newContact(data)
     }
 
-    //Save data to the DB
-    saveData(data);
+    //refreshlist();
 
-    insert_sorted($("#contacts-table"), generate_contact_row(data));
-    update_table_status();
+    //insert_sorted($("#contacts-table"), generate_contact_row(data));
+    //update_table_status();
     cleanup_form();
     form.fadeOut();
 };
@@ -73,31 +71,43 @@ function confirm_use_of_form(form) {
 }
 
 
-function saveData(data){
-    var ruta = "/contacts_improvements/savecontact?"
-    var queryParams = {};
-    if (data.id) {
-        queryParams.id = data.id;
-    }
-    queryParams.date = data.date;
-    queryParams.name = data.name;
-    queryParams.email = data.email;
-    queryParams.address = data.address;
-    queryParams.phone = data.phone;
-    queryParams.city = data.city;
+function newContact(data){
+    var ruta = "/newcontact"
     
-    var query = $.param(queryParams);
-    $.getJSON(servidor + ruta + query,
-        function(id) {
-            data.id = id;
-        }
-    );
+    $.post(server + ruta, data, function(response) {
+        //window.location.replace("contacts_improvements.html/loadcontact");
+        refreshlist();
+    });  
 }
 
+function updateContact(data){
+    var ruta = "/updatecontact"
+    
+    $.post(server + ruta, data, function(response) {
+        //window.location.replace("contacts_improvements.html/loadcontact");
+        data.id = response;
+        refreshlist();
+    }); 
+}
+
+function refreshlist() {
+    
+    $.getJSON(server + "/loadcontact",
+        function(data) {
+            data.forEach(row => {
+                console.log(row);
+                insert_sorted($("#contacts-table"), generate_contact_row(row));
+            });
+        }
+    );
+
+    update_table_status();
+
+}
 
 function edit_contact(icon) {
     var form = $("#contact-form");
-    console.log (form);
+    //console.log (form);
     if (confirm_use_of_form(form)) {
         var row = $(icon).parent().parent()[0];
         $("#contact-id",form).val($(".contact-id", row).text());
@@ -212,23 +222,23 @@ function validate_form(form) {
 
     valid_email = validate_field($("#contact-mail",form), function(field) {
                         return $.trim(field.val()).length > MIN_MAIL_LENGTH;
-                  },    "The contact email is required") &&
-                  validate_field($("#contact-mail",form), function(field) {
+                    }, "The contact email is required") &&
+                    validate_field($("#contact-mail",form), function(field) {
                         return $.trim(field.val()).length < MAX_MAIL_LENGTH;
-                     }, "The contact email cannot have more than 35 characters") &&
-                  validate_field($("#contact-mail",form), function(field) {
+                    }, "The contact email cannot have more than 35 characters") &&
+                    validate_field($("#contact-mail",form), function(field) {
                         return is_valid_email_address(field.val());
-                  },    "The email format is not correct") &&
-                  validate_field($("#contact-mail",form), function(field) {
+                    }, "The email format is not correct") &&
+                    validate_field($("#contact-mail",form), function(field) {
                         return !value_already_exists($.trim(field.val()), "."+field.attr("id"), item_id);
-                  },    "A contact with this email already exists");
+                    }, "A contact with this email already exists");
     valid_phone = validate_field($("#contact-phone",form), function(field) {
                         return $.trim(field.val()).length < MAX_PHONE_LENGTH;
-                        }, "The contact phone cannot have more than 10 numbers")&&
-                  validate_field($("#contact-phone",form), function(field) { ;
+                    }, "The contact phone cannot have more than 10 numbers")&&
+                    validate_field($("#contact-phone",form), function(field) { ;
                         return is_valid_numeric (field.val());
-                        },    "The phone format is not correct")
-                        console.log (valid_date);
+                    }, "The phone format is not correct")
+                    console.log (valid_date);
     return valid_date && valid_name && valid_email && valid_phone;
 }
 
@@ -288,7 +298,9 @@ $(document).ready(function() {
     $(".control-group").change(function() {
         cleanup_errors(this);
     });
-    update_table_status();
+    
+    refreshlist();
+
     update_current_sort({'field':'contact-name','direction':'asc'});
 });
 
