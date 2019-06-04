@@ -1,3 +1,5 @@
+CREATE DATABASE `db_training` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+
 USE db_training;
 
 CREATE TABLE City
