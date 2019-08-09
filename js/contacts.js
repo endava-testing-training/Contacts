@@ -132,14 +132,14 @@ function validate_form(form) {
                      }, "The contact name already exists") &&
                      validate_field($("#contact-name",form), function(field) {
                         return $.trim(field.val()).length < MAX_NAME_LENGTH;
-                     }, "The contact name cannot have more than 35 charaters");
+                     }, "The contact name cannot have more than 35 characters");
 
     valid_email = validate_field($("#contact-mail",form), function(field) {
                         return $.trim(field.val()).length > MIN_MAIL_LENGTH;
                   },    "The contact email is required") &&
                   validate_field($("#contact-mail",form), function(field) {
                         return $.trim(field.val()).length < MAX_MAIL_LENGTH;
-                     }, "The contact email cannot have more than 35 charaters") &&
+                     }, "The contact email cannot have more than 35 characters") &&
                   validate_field($("#contact-mail",form), function(field) {
                         return is_valid_email_address(field.val());
                   },    "The email format is not correct") &&
